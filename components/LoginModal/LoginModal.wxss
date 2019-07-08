@@ -1,0 +1,66 @@
+.dark-modal{
+  position: fixed;
+  background: rgba(0, 0, 0, .6);
+  z-index: 99;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+.reg-login-box{
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 100;
+  background: #fff;
+  top: 50%;
+  left: 50%;
+  margin-top: -280rpx;
+  margin-left: -250rpx;
+  width: 500rpx;
+  height: 560rpx;
+  border-radius: 10rpx;
+  padding: 40rpx 30rpx;
+}
+.title{
+  color: #000;
+  text-align: center;
+  margin: 40rpx auto;
+}
+.phone-input{
+  font-size: 28rpx;
+  border: 1px solid #ccc;
+  height: 80rpx;
+  border-radius: 80rpx;
+  padding-left: 25rpx;
+  margin: 30rpx 0;
+}
+.mes-box{
+  padding-left: 25rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+  border: 1px solid #ccc;
+  display: flex;
+}
+.mes-input{
+  height: 80rpx;
+  width: 60%;
+  font-size: 28rpx;
+}
+.mes-text{
+  font-size: 24rpx;
+  line-height: 80rpx;
+  color: #D6AF64;
+}
+.login-btn{
+  background: #D6AF64;
+  border-radius: 80rpx;
+  text-align: center;
+  color: #fff;
+  margin: 30rpx 0;
+  line-height: 80rpx;
+  height: 80rpx;
+}
+.opaction{
+  opacity: .6;
+}

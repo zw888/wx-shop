@@ -1,0 +1,16 @@
+<!--components/LoginModal/LoginModal.wxml-->
+<view>
+  <view class='dark-modal'>
+  </view>
+  <view class='reg-login-box'>
+     <view class='title'>
+        短信验证码登录
+     </view>
+    <input class='phone-input' bindinput='getPhone' maxlength="11" type='number' placeholder="手机号" />
+    <view class='mes-box'>
+      <input maxlength="6" bindinput='getRegNum' class='mes-input' type='number' placeholder="短信验证码" />
+      <view class='mes-text'>获取验证码</view>
+    </view>
+    <view class='login-btn {{isDisabled ? "opaction" : "" }}' bindtap='mesLogin'>登录</view>
+  </view>
+</view>

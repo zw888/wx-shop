@@ -1,0 +1,12 @@
+<view class='login-page'>
+  <view class="logininfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+    <button class='quick-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信授权快捷登录</button>
+    <button bindtap='handleShowModal' class='reg-login'>短信验证码登录</button>
+  </view>
+  <login-modal bindcloseModal='handleShowModal' wx:if='{{showModal}}'></login-modal>
+</view>

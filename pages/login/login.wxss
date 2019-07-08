@@ -1,0 +1,43 @@
+.login-page{
+  position: fixed;
+  top:0;
+  bottom:0;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.logininfo {
+  margin-top: -120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.quick-login{
+  margin-top: 60rpx;
+  width: 90%;
+  border-radius: 120rpx;
+  color: #fff;
+  background: #D6AF64;
+}
+.reg-login{
+  margin-top: 60rpx;
+  width: 90%;
+  border: 1rpx solid #D6AF64;
+  color: #D6AF64;
+  border-radius: 120rpx;
+}
