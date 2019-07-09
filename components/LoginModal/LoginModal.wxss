@@ -64,3 +64,15 @@
 .opaction{
   opacity: .6;
 }
+.close-icon{
+  z-index: 999;
+  position: absolute;
+  top: -80rpx;
+  left: 50%;
+  margin-left: -24rpx;
+  height: 48rpx;
+  width: 48rpx;
+  background-image:url('../../images/close.png');
+  /* url('../../images/close.png') no-repeat 100% 100% center */
+  /* background:#000; */
+}

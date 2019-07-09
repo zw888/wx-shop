@@ -4,7 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    bindcloseModal
+    
   },
 
   /**
@@ -29,6 +29,9 @@ Component({
       wx.showLoading({
         title: '加载中',
       })
+    },
+    closeModal() {
+      this.triggerEvent('closeModal')
     },
     
     // input手机号监听
