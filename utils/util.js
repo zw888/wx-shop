@@ -1,4 +1,4 @@
-const formatTime = date => {
+export const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -14,6 +14,19 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-module.exports = {
-  formatTime: formatTime
-}
+// 获取code
+export function getCode() {
+  return new Promise((resolve, reject)=>{
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log('login', res)
+        resolve(res.code)
+      }, 
+      fail: err=>{
+        reject(err)
+      }
+    })
+  })
+} 
+
