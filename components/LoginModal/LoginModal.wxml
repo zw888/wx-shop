@@ -11,7 +11,7 @@
       <input maxlength="6" bindinput='getRegNum' class='mes-input' type='number' placeholder="短信验证码" />
       <view class='mes-text'>获取验证码</view>
     </view>
-    <view class='login-btn {{isDisabled ? "opaction" : "" }}' bindtap='mesLogin'>登录</view>
+    <button  class='login-btn {{isDisabled ? "opaction" : "" }}' open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
     <icon class='close-icon' bindtap='closeModal' size='32' type='cancel' color='#fff'></icon>
   </view>
 </view>

@@ -11,7 +11,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     showModal: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    openId: '',
   },
 
   /**
@@ -34,22 +34,33 @@ Page({
     getCode().then(code=>{
       console.log(code)
       const data = {
-        Authorization: '',
         code,
         nikeName: userInfo.nickName,
-        sex: userInfo.gender,
+        sex: String(userInfo.gender),
         birthday: ''
       }
       console.log(data, userInfo, getSessionUrl)
       ajax(getSessionUrl, data, 'POST').then(
         res=>{
-          console.log(res)
+          console.log(3333, res.data.content.openid)
+          wx.showToast({
+            title: '微信登录成功',
+            complete:()=>{
+              setTimeout(() => {
+                wx.navigateTo({
+                  url: '/pages/index/index',
+                })
+              }, 1000)
+            }
+          })
+          
         }
       ).catch(res=>{
         console.log(err)
       })
     }).catch(
       err => {
+        console.log(err)
         wx.showToast({
           title: '登录失败',
           icon: 'none'

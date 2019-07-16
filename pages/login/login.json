@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "login-modal": "../../components/LoginModal/LoginModal"
+    "login-modal": "../../components/LoginModal/LoginModal",
+    "getUserInfo-modal": "../../components/getUserInfoModal/getUserInfoModal"
   }
 }

@@ -1,8 +1,8 @@
 const isProd = false
-const baseUrl = 'http://10.10.13.211:8091/mall'
+const baseUrl = 'http://47.103.195.33:8091/mall'
 
 export const getSessionUrl = baseUrl + '/wechatLogin'
-
+export const phoneLoginUrl = baseUrl + '/plogin'
 export default function ajax(url, data = {}, method = 'GET') {
   if(!url) {
     wx.showModal({
@@ -16,6 +16,9 @@ export default function ajax(url, data = {}, method = 'GET') {
       url,
       data,
       method,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       success: (data) => {
         resolve(data)
       },

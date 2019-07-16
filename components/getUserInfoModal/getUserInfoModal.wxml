@@ -1,0 +1,17 @@
+<!--components/LoginModal/LoginModal.wxml-->
+<view wx:if ='{{noUserInfoScope}}'>
+  <view class='dark-modal'>
+  </view>
+  <view class='reg-login-box'>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="../../images/shop.png" mode="cover"></image>
+      <text class="userinfo-nickname">天天商城</text>
+      <view class='text-desc'>
+        <text>
+          你暂未授权天天商场小程序获取您的作息，为了能正常使用小程序的功能，请开始【安全授权】并于稍后的弹框中点击【允许】
+        </text>
+      </view>
+       <button class='login-btn' open-type="getUserInfo"  bindgetuserinfo="getUserInfo">
+       安全授权
+  </button>
+  </view>
+</view>
