@@ -31,7 +31,12 @@ Page({
   onLoad: function (options) {
 
   },
-
+  toOtherPage(e) {
+    const {id} = e.currentTarget.dataset
+    wx.navigateTo({
+      url: '/pages/product/product?id='+ id,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

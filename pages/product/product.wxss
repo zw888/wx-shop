@@ -1,1 +1,83 @@
-/* pages/product/product.wxss */
+page{
+  background: #f8f8f8;
+}
+.bold{
+  font-weight: bold;
+}
+
+/* swiper */
+.img-box{
+  width: 100%;
+  overflow: hidden;
+  height: 360rpx;
+}
+.slide-image{
+  width: 100%;
+  height: 360rpx;
+}
+
+/* 价格 */
+.price-box{
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  height: 70rpx;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.vip-price-box{
+  display: flex;
+  align-items: center;
+}
+.vip-price{
+  color: #b229aa;
+}
+.vip-icon{
+  width: 21rpx;
+  height: 15rpx;
+  margin-left: 15rpx;
+}
+.vip-text{
+  color: #9a9a9a;
+  font-size: 20rpx;
+}
+
+/* 商品描述 */
+.desc-box{
+  background: #fff;
+}
+.desc-inner-box{
+  margin: 0 30rpx;
+  padding: 8px 0;
+  border-top: 1px solid #eee;
+}
+
+.product-name{
+  display: inline;
+  margin-right: 15rpx;
+}
+.product-intr{
+  display: inline;
+  color: #9a9a9a;
+  margin-right: 15rpx;
+}
+
+
+/* 规格 */
+.size-box {
+  background: #fff;
+  margin: 30rpx 0;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.class-box{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+.class-item{
+  text-align: center;
+  width: 166rpx;
+  border: 1rpx solid #b229aa;
+  border-radius: 8rpx;  
+}

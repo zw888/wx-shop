@@ -38,23 +38,26 @@ scroll-x='{{true}}' class='class-type'>
   <!-- product-list -->
   <view class='list-box'>
     <view class='list-item' wx:for='item in [1,2,3,4,5,6,3,3,23,23,4]' wx:key='index'>
-      <view class='product-box'>
+      <view class='product-box' bindtap='toOtherPage' data-id='{{index}}'>
         <image class='product-img' src='../../images/product1.jpg'></image>
         <view>精华液修</view>
         <view>新品.限时.定制</view>
-      </view>
+        </view>
         <view class='desc'>
           <view class='price-box'>
             <view class='old-price'>
-              ￥425.00
+             ￥
+            <text class='num'>425.00</text>
             </view>
             <view class='left-desc'>
               <text class='current-price bold'>￥425.00</text>
               <text class='text'>代言人价</text>
             </view>
           </view>
-          <view class='cart-box'>
-              <image class='cart' src='../../images/cart.png'></image>
+          <view  class='cart-box'>
+             <view class='cart-inner-box'>
+              <image class='cart' src='../../images/cart_icon.png'></image>
+            </view>
           </view>
         </view>
     </view>

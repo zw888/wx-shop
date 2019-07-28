@@ -1,19 +1,58 @@
 {
   "pages": [
-     "pages/shopping/shopping",
-    "pages/index/index",
+    "pages/product/product",
+    "pages/shopping/shopping",
+    "pages/home/home",          
+    "pages/dingzhi/dingzhi",    
+    "pages/community/community",
+    "pages/user/user",       
     "pages/login/login",
     "pages/logs/logs",
     "pages/cart/cart",
     "pages/address/address",
-    "pages/setAddress/setAddress",
-    "pages/product/product"
+    "pages/setAddress/setAddress"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333333",
+    "selectedColor": "b229aa",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/tab/home_icon.png",
+        "selectedIconPath": "images/tab/home_icon.png"
+      },
+      {
+        "pagePath": "pages/shopping/shopping",
+        "text": "商城",
+        "iconPath": "images/tab/shop_icon.png",
+        "selectedIconPath": "images/tab/shop_icon.png"
+      },
+      {
+        "pagePath": "pages/dingzhi/dingzhi",
+        "text": "定制",
+        "iconPath": "images/tab/dingzhi_icon.png",
+        "selectedIconPath": "images/tab/dingzhi_icon.png"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "text": "社区",
+        "iconPath": "images/tab/community_icon.png",
+        "selectedIconPath": "images/tab/community_icon.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "首页",
+        "iconPath": "images/tab/user_icon.png",
+        "selectedIconPath": "images/tab/user_icon.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

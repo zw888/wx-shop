@@ -69,10 +69,14 @@
   justify-content: space-between;
 }
 .old-price{
-  font-size: 22rpx;
   color: #999;
 }
+.old-price .num{
+  font-size: 20rpx;
+  text-decoration: line-through;
+}
 .current-price{
+  font-size: 24rpx;
   color:#B229AA;
 }
 .bold{
@@ -85,7 +89,7 @@
 .text{
   color: #999;
   margin-left: 20rpx;
-  font-size: 22rpx;
+  font-size: 20rpx;
 }
 .list-item{
   background: #fff;
@@ -104,16 +108,23 @@
   text-align: center;
 }
 .cart{
-  width: 40rpx;
-  height: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 .cart-box{
-  background: #B229AA;
-  width: 50rpx;
-  height: 50rpx;
+  padding: 10rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+.cart-inner-box{
+  background: #B229AA;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40rpx;
+  width: 40rpx;
   border-radius: 50%;
 }
