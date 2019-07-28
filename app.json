@@ -1,8 +1,13 @@
 {
   "pages": [
-    "pages/login/login",
+     "pages/shopping/shopping",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/login/login",
+    "pages/logs/logs",
+    "pages/cart/cart",
+    "pages/address/address",
+    "pages/setAddress/setAddress",
+    "pages/product/product"
   ],
   "window": {
     "backgroundTextStyle": "light",

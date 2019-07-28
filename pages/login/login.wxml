@@ -4,7 +4,8 @@
       <image bindtap="bindViewTap" class="userinfo-avatar" src="../../images/shop.png" mode="cover"></image>
       <text class="userinfo-nickname">天天商城</text>
     </block>
-    <button class='quick-login' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-type='wx'>微信授权快捷登录</button>
+    <button class='quick-login' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+    微信授权快捷登录</button>
     <button bindtap='handleShowModal' class='reg-login'>短信验证码登录</button>
   </view>
   <login-modal bindcloseModal='handleShowModal' wx:if='{{showModal}}'></login-modal>

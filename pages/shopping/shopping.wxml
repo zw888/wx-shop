@@ -1,0 +1,62 @@
+<view class='shopping'>
+  <!-- 搜索 -->
+  <view class='input-box'>
+    <input class='search-input'  bindinput="bindKeyInput" placeholder="请输入商品"/>
+    <view class='search-icon-box'>
+       <i-icon class='search-icon' size='22' type="search" />
+    </view>
+  </view>
+
+  <!-- 头部 -->
+  <view class='title'>
+    <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox-text" wx:for="{{items}}" wx:key='{{item.name}}'>
+        {{item.value}}
+          <checkbox class='checkbox-item' value="{{item.name}}" color='#333' checked="{{item.checked}}  "/>
+        </label>
+    </checkbox-group>
+    <view>
+      筛选 <i-icon size='20' type="enter" />
+    </view>
+  </view>
+
+  <!-- 种类 -->
+  <view class='class-box'>
+     <scroll-view 
+scroll-x='{{true}}' class='class-type'>
+    <text 
+        class='class-item {{activeClassType === item.id ? "active": "" }}' 
+        wx:for='{{classTypes}}' 
+        wx:key='{{item.id}}'
+        data-key='{{item.id}}'
+        bindtap='switchClassType'
+        >{{item.className}}</text>
+  </scroll-view>
+  </view>
+ 
+
+  <!-- product-list -->
+  <view class='list-box'>
+    <view class='list-item' wx:for='item in [1,2,3,4,5,6,3,3,23,23,4]' wx:key='index'>
+      <view class='product-box'>
+        <image class='product-img' src='../../images/product1.jpg'></image>
+        <view>精华液修</view>
+        <view>新品.限时.定制</view>
+      </view>
+        <view class='desc'>
+          <view class='price-box'>
+            <view class='old-price'>
+              ￥425.00
+            </view>
+            <view class='left-desc'>
+              <text class='current-price bold'>￥425.00</text>
+              <text class='text'>代言人价</text>
+            </view>
+          </view>
+          <view class='cart-box'>
+              <image class='cart' src='../../images/cart.png'></image>
+          </view>
+        </view>
+    </view>
+  </view>
+</view>

@@ -1,6 +1,6 @@
 // pages/login/login.js
 import {getCode} from '../../utils/util.js'
-import ajax, {getSessionUrl} from '../../utils/api.js'
+import ajax, { getSessionUrl, getPhoneNumberUrl} from '../../utils/api.js'
 Page({
 
   /**
@@ -18,6 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    console.log(3333, getApp())
   },
   handleShowModal: function() {
     console.log(111)
@@ -25,35 +26,50 @@ Page({
       showModal: !this.data.showModal
     })
   },
-  getUserInfo: function (e) {
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-    const { userInfo } = e.detail
+  getPhoneNumber: function (e) {
+   console.log('手机号码', e)
+    const { encryptedData, iv } = e.detail
     getCode().then(code=>{
       console.log(code)
       const data = {
         code,
-        nikeName: userInfo.nickName,
-        sex: String(userInfo.gender),
+        nikeName: getApp().globalData.userInfo.nickName,
+        sex: String(getApp().globalData.userInfo.gender),
         birthday: ''
       }
-      console.log(data, userInfo, getSessionUrl)
       ajax(getSessionUrl, data, 'POST').then(
         res=>{
           console.log(3333, res.data.content.openid)
-          wx.showToast({
-            title: '微信登录成功',
-            complete:()=>{
-              setTimeout(() => {
-                wx.navigateTo({
-                  url: '/pages/index/index',
+          const phoneParams = {
+            encryptedData,
+            openId: res.data.content.openid,
+            iv
+          }
+          ajax(getPhoneNumberUrl, phoneParams, 'POST').then(
+            res=>{
+              console.log(res)
+              const {data} = res
+              if(data.code === '0') {
+                const phoneObj = JSON.parse(data.content)
+                wx.setStorageSync('phoneNumber', phoneObj.phoneNumber)
+                
+                wx.showToast({
+                  title: '微信登录成功',
+                  complete: () => {
+                    setTimeout(() => {
+                      wx.navigateTo({
+                        url: '/pages/index/index',
+                      })
+                    }, 1000)
+                  }
                 })
-              }, 1000)
+              }
             }
-          })
-          
+          ).catch(
+            err=>{
+              console.log(err)
+            }
+          )          
         }
       ).catch(res=>{
         console.log(err)

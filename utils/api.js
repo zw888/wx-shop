@@ -3,6 +3,7 @@ const baseUrl = 'http://47.103.195.33:8091/mall'
 
 export const getSessionUrl = baseUrl + '/wechatLogin'
 export const phoneLoginUrl = baseUrl + '/plogin'
+export const getPhoneNumberUrl = baseUrl + '/decryptWechat'
 export default function ajax(url, data = {}, method = 'GET') {
   if(!url) {
     wx.showModal({

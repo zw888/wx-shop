@@ -9,5 +9,5 @@
   box-sizing: border-box;
 } 
 page{
-  font-size: 32rpx;
+  font-size: 28rpx;
 }
