@@ -2,7 +2,7 @@
   "pages": [
     "pages/product/product",
     "pages/shopping/shopping",
-    "pages/home/home",          
+    "pages/home/home",
     "pages/dingzhi/dingzhi",    
     "pages/community/community",
     "pages/user/user",       

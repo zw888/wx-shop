@@ -51,12 +51,13 @@ scroll-x='{{true}}' class='class-type'>
             </view>
             <view class='left-desc'>
               <text class='current-price bold'>￥425.00</text>
+              <image class='price-icon' src='../../images/common/price_icon.png'></image>
               <text class='text'>代言人价</text>
             </view>
           </view>
           <view  class='cart-box'>
              <view class='cart-inner-box'>
-              <image class='cart' src='../../images/cart_icon.png'></image>
+              <image class='cart' src='../../images/shop/white_cart_icon.png'></image>
             </view>
           </view>
         </view>
