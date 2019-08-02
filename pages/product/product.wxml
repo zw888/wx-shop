@@ -39,7 +39,8 @@
 	<view class='size-box'>
 		<view class='title bold'>规格</view>
 		<view class='class-box'>
-			<view class='class-item' wx:for='{{["10g","50g","100g"]}}'>
+			<view class='class-item {{ activeClassIndex === index ? "active-item" : ""}}' bindtap="switchActiveClassIndex" data-index='{{index}}' wx:for='{{["10g","50g","100g"]}}'>
+				<image class='select-icon' src='../../images/details/select_icon.png'></image>
 				{{item}}
 			</view>
 		</view>
@@ -73,13 +74,13 @@
 		<image src='../../images/common/right_icon.png' class='right-icon' />
 	</view>
 
-
-<view class="fix-cart">
-		<image src='../../images/details/cart_icon.png' class='fix-cart-icon' />
-</view>
-<view class="fix-return-top">
-	  <image src='../../images/details/return_top_icon.png' class='fix-return-icon' />
-</view>
+	<!-- 底部快按钮 -->
+	<view class="fix-cart">
+			<image src='../../images/details/cart_icon.png' class='fix-cart-icon' />
+	</view>
+	<view class="fix-return-top">
+		<image src='../../images/details/return_top_icon.png' class='fix-return-icon' />
+	</view>
 
 	<!-- 底部工具栏 -->
 	<view class='tool-box'>

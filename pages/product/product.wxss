@@ -75,10 +75,26 @@ page{
   padding: 20rpx 0;
 }
 .class-item{
+  position: relative;
   text-align: center;
   width: 166rpx;
   border: 1rpx solid #b229aa;
-  border-radius: 8rpx;  
+  border-radius: 6rpx;  
+}
+.active-item{
+  border: 1rpx solid #b229aa;
+  color: #b229aa;
+}
+.select-icon{
+  display: none;
+  position: absolute;
+  top:0;
+  left:0;
+  width: 40rpx;
+  height: 22rpx;
+}
+.active-item .select-icon{
+ display: block;
 }
 
 /* 代言人 */

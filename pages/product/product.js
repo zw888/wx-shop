@@ -31,9 +31,8 @@ Page({
       ],
       size: ['10g', '50g', '100g'],
     },
-    
+    activeClassIndex: 0,
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -79,6 +78,13 @@ Page({
   durationChange: function (e) {
     this.setData({
       duration: e.detail.value
+    })
+  },
+  switchActiveClassIndex (e) {
+    const {index} = e.currentTarget.dataset
+    if(index !== this.data.activeClassIndex)
+    this.setData({
+      activeClassIndex: index
     })
   },
   /**
