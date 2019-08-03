@@ -1,1 +1,160 @@
-/* pages/cart/cart.wxss */
+/* youhu */
+.cart-page{
+
+}
+.youhu{
+  color: #999999;
+  line-height: 1;
+  display: flex;
+  padding: 0 30rpx;
+  justify-content: space-between;
+  height: 65rpx;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+}
+.youhu-right{
+  display: flex;
+  align-items: center;
+}
+.right-icon{
+  width: 15rpx;
+  height: 22rpx;
+  margin-left: 15rpx;
+}
+
+
+/* cart-list */
+.cart{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:30rpx 20rpx;
+}
+.cart-select{
+  width: 32rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32rpx;
+}
+.select-box{
+  padding: 10rpx;
+}
+.selected{
+  border: 1rpx solid #b229aa;
+  background: #b229aa;
+}
+.sure-icon{
+  width: 22rpx;
+  height: 22rpx;
+}
+
+
+.cart-left{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-img{
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 30rpx;
+}
+.cart-desc{
+   width: 620rpx;
+   align-items: center;
+   display: flex;
+   /* justify-content: space-between; */
+}
+.cart-tag{
+   display: flex;
+   color:#999999;
+   font-size: 24rpx;
+   margin-top: 5rpx;
+   margin-bottom: 20rpx;
+}
+.cart-tag-item{
+  margin-right: 15rpx;
+}
+.cart-class{
+   font-size: 20rpx;
+   display: flex;
+   justify-content: space-between;
+}
+.cart-class-item{
+   color: #b229aa;
+  border: 1px solid #b229aa;
+  padding: 0 10rpx;
+  border-radius: 20rpx;
+  margin-right: 15rpx;
+}
+.cart-intr{
+  flex: 1;
+}
+.cart-class-left{
+  display: flex;
+}
+.cart-num{
+  display: flex;
+  justify-content: space-between;
+}
+.icon{
+  width: 24rpx;
+  height: 24rpx;
+}
+.num-box{
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  width: 40rpx;
+  text-align: center;
+}
+.minus-box{
+  border: 1px solid #eee;
+  display: flex;
+  width: 36rpx;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+}
+.add-box{
+  border: 1px solid #eee;
+  width: 36rpx;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 8rpx;
+  border-bottom-left-radius: 8rpx;
+}
+
+
+
+/* bottom */
+.bottom{
+  position: fixed;
+  left:0;
+  right:0;
+  height: 90rpx;
+  background: #fff;
+  bottom:0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  border-top: 1rpx solid #eee;
+  font-size: 28rpx;
+}
+.bottom-select-box{
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+.text{
+  margin-right: 15rpx;
+  margin-left: 5rpx;
+}
+.del-text{
+  color: #b229aa;
+}
