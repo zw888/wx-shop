@@ -1,7 +1,6 @@
 // pages/shopping/shopping.js
 import ajax, { getProductDataUrl, getProdFirstUrl } from '../../utils/api.js'
 import { addProductToCart} from '../../utils/cart.js'
-const { $Toast } = require('../../dist/base/index');
 Page({
 
   /**
@@ -26,9 +25,9 @@ Page({
       { id: 10, className: '玩具类' }
     ],
     productList: [
-      { id: 1, imageUrl: '../../images/product1.jpg', name: '蓝草精华', tag: '新品.限时.定制', oldPrice:"425.00", vipPrice: '425.00'},
-      { id: 2, imageUrl: '../../images/product1.jpg', name: '牛精食品', tag: '力道.限时.定制', oldPrice: "425.00", vipPrice: '425.00' },
-      { id: 3, imageUrl: '../../images/product1.jpg', name: '蛋偶脆皮', tag: '新鲜.美食.口味', oldPrice: "425.00", vipPrice: '425.00' }
+      { id: '1', imageUrl: '../../images/product1.jpg', name: '蓝草精华', tag: '新品.限时.定制', oldPrice:"425.00", vipPrice: '425.00'},
+      { id: '2', imageUrl: '../../images/product1.jpg', name: '牛精食品', tag: '力道.限时.定制', oldPrice: "425.00", vipPrice: '425.00' },
+      { id: '3', imageUrl: '../../images/product1.jpg', name: '蛋偶脆皮', tag: '新鲜.美食.口味', oldPrice: "425.00", vipPrice: '425.00' }
     ],
     productClassType: [],
     params: {
@@ -64,10 +63,10 @@ Page({
      this.setData({
        isLoading: true
      })
-     $Toast({
-       content: '加载中',
-       type: 'loading'
-     });
+     wx.showToast({
+       title: '加载中',
+       icon: 'loading'
+     })
     const {params} = this.data
     ajax(getProductDataUrl, params, 'GET').then(
       res=>{
@@ -77,7 +76,7 @@ Page({
         this.setData({
           isLoading: false
         })
-        $Toast.hide();
+        wx.hideToast();
       }
     ).catch(
       err=>{
@@ -85,7 +84,7 @@ Page({
         this.setData({
           isLoading: false
         })
-        $Toast.hide();
+        wx.hideToast();
       }
     )
   },
@@ -176,7 +175,6 @@ Page({
   },
   addProductToCart(e) {
     const {item} = e.currentTarget.dataset 
-    console.log('item', item)
     if (item) {
       addProductToCart(item)
     }

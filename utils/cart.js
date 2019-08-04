@@ -13,5 +13,9 @@ export function addProductToCart(item) {
       const findIndex = arr.findIndex(item1 => item1.id === item.id) // 判断index 是否有相等的
       return findIndex === index
     })
-  wx.setStorageSync('cartProductList', newCartProductList)
+   wx.setStorageSync('cartProductList', newCartProductList)
+   wx.showToast({
+     title: '加入购物车成功',
+     icon: 'success'
+   })
 }

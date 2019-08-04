@@ -7,7 +7,7 @@
 		 interval="{{interval}}"
 		 duration="{{duration}}"
 		>
-			<block wx:for="{{imgUrls}}">
+			<block wx:for="{{imgUrls}}" wx:key='{{index}}'>
 				<swiper-item>
 					<image src="{{item}}" mode='aspectFill' class="slide-image" />
 				</swiper-item>
@@ -29,7 +29,7 @@
 	<view class='desc-box'>
 		<view class='desc-inner-box'>
 			<view class='product-name bold'>即时燕窝</view>
-			<view class='product-intr' wx:for='{{product.intrArr}}'>
+			<view class='product-intr' wx:for='{{product.intrArr}}' wx:key='{{index}}'>
 				{{item.name}}
 			</view>
 		</view>
@@ -39,7 +39,7 @@
 	<view class='size-box'>
 		<view class='title bold'>规格</view>
 		<view class='class-box'>
-			<view class='class-item {{ activeClassIndex === index ? "active-item" : ""}}' bindtap="switchActiveClassIndex" data-index='{{index}}' wx:for='{{["10g","50g","100g"]}}'>
+			<view class='class-item {{ activeClassIndex === index ? "active-item" : ""}}' bindtap="switchActiveClassIndex" data-index='{{index}}' wx:for='{{["10g","50g","100g"]}}' wx:key='{{index}}' >
 				<image class='select-icon' src='../../images/details/select_icon.png'></image>
 				{{item}}
 			</view>
@@ -76,7 +76,7 @@
 
 	<!-- 底部快按钮 -->
 	<view class="fix-cart">
-			<image src='../../images/details/cart_icon.png' class='fix-cart-icon'  bindtap='addProductToCart' />
+			<image src='../../images/details/cart_icon.png' class='fix-cart-icon'  bindtap='addProductToCart' data-item='{{cartData}}' />
 	</view>
 	<view class="fix-return-top">
 		<image src='../../images/details/return_top_icon.png' class='fix-return-icon' bindtap='returnTopClick' />
@@ -95,9 +95,9 @@
 			</view>
 		</view>
 		<view class='tool-right-box'>
-			<view class='tool-cart'>
+			<view class='tool-cart' bindtap='goToCartPage'>
         <view class="tool-num">
-          12
+          {{cartProductTotal}}
         </view>
 				<image src='../../images/details/cart_icon.png' class='tool-cart-icon' />
       </view>
@@ -106,5 +106,6 @@
       </view>
 		</view>
 	</view>
+
 </view>
 

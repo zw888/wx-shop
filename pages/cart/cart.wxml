@@ -10,20 +10,19 @@
   </view>
 
   <!-- cart-list -->
-  <view class='cart' wx:for='123456789'>
-    <view bindtap='switchIsSelectd' class='select-box'>
-      <view wx:if='{{!isSelect}}' class='cart-select'>
+  <view class='cart' wx:for='{{cartProductList}}' wx:key='{{item.id}}'>
+    <view bindtap='switchIsSelectd' class='select-box' data-index='{{index}}'>
+      <view wx:if='{{!item.selected}}' class='cart-select'>
       </view>
       <view wx:else class='cart-select selected'>
       </view>
     </view>
     <view class='cart-desc'>
-      <image src='../../images/product1.jpg' class='product-img'></image>
+      <image src='{{item.imageUrl}}' class='product-img'></image>
       <view class='cart-intr'>
-        <view class='cart-title'>即时燕窝</view>
+        <view class='cart-title'>{{item.name}}</view>
         <view class='cart-tag'>
-          <view class='cart-tag-item'>精心炖煮</view>
-          <view class='cart-tag-item'>精心炖煮</view>
+          <view class='cart-tag-item'>{{item.tag}}</view>
         </view>
         <view class='cart-class'>
           <view class='cart-class-left'>
@@ -31,11 +30,11 @@
             <view class='cart-class-item'>仅限VIP会员</view>
           </view>
           <view class='cart-num'>
-            <view class='add-box'>
+            <view class='add-box' bindtap='updateCartProductNum' data-type='minus' data-index='{{index}}'>
               <image class='icon' src='../../images/cart/minus_icon.png'></image>
             </view>
-            <view class='num-box'>1</view>
-            <view class='minus-box'>
+            <view class='num-box'>{{item.num}}</view>
+            <view class='minus-box' bindtap='updateCartProductNum' data-type='add' data-index='{{index}}'>
               <image class='icon' src='../../images/cart/add_icon.png'></image>
             </view>
           </view>
@@ -47,24 +46,24 @@
   <!-- bottom-fix -->
   <view class='bottom'>
      <view class='bottom-select-box'>
-      <view  bindtap='switchIsSelectd' class='select-box'>
-        <view wx:if='{{!isSelect}}' class='cart-select'>
+      <view  bindtap='setAllSelectd' class='select-box' >
+        <view wx:if='{{!isAllSelected}}' class='cart-select'>
         </view>
         <view wx:else class='cart-select selected'>
         </view>
       </view>
       <view class='text'>全选</view>
-      <view class='del-text'>删除</view>
+      <view class='del-text' bindtap='delSelectedCartList'>删除</view>
     </view>
     <view class='price-box'>
         <view>合计：</view> 
         <view class='price'>
-          <view  class='text'>￥189.00</view>   
+          <view  class='text'>￥{{cartProductAllPrice}}</view>   
           <text>(含运费)</text>
         </view>
     </view>
-    <view class='jieshau'>
-      结算（01）
+    <view bindtap='toOrderPage' class='jieshau {{selectedCartProductAllNum === 0 ? "noSelected" : ""}}'>
+      结算({{selectedCartProductAllNum}})
     </view>
   </view>
 </view>

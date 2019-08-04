@@ -1,4 +1,7 @@
 // pages/product/product.js
+import ajax, { getProdDetailUrl } from '../../utils/api.js'
+import { addProductToCart, getCartProductList } from '../../utils/cart.js'
+
 Page({
 
   /**
@@ -14,6 +17,16 @@ Page({
     autoplay: false,
     interval: 5000,
     duration: 1000,
+    cartProductTotal: 0,
+    // 商品存入购物车的一些信息
+    productCartData: {
+      id: '',
+      imageUrl: '../../images/product1.jpg',
+      name: '即时燕窝',
+      tag: '新鲜.可口.舒适',
+      oldPrice: '323.89',
+      vipPrice: '480.00'
+    },
     product: {
       price: '189.00',
       vipPirce: '160.00',
@@ -36,8 +49,19 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  onShow() {
+    this.setCartProductLength()
+  },
   onLoad: function (options) {
-    console.log(111, this.data.product.intrArr)
+   
+    // 获取购物车数量
+    this.setCartProductLength()
+
+    const {id} = options
+    this.setData({
+      productCartData: {...this.data.productCartData, id}
+    })
+    this.getProductDetails(id)
   },
 
   /**
@@ -47,18 +71,35 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
 
+  },
+  setCartProductLength() {
+    // 获取购物车数量
+    const cartProductTotal = getCartProductList().length;
+    this.setData({ cartProductTotal })
+  },
+  getProductDetails(id) {
+    wx.showToast({
+      title: '数据加载中...',
+      icon: 'loading'
+    })
+    const params = {
+      id
+    }
+    ajax(getProdDetailUrl, params, 'GET').then(
+      res=>{
+        wx.hideToast()
+        console.log('productDetails', res)
+      }
+    ).catch(err=>{
+      wx.hideToast()
+      console.log(err)
+    })
   },
   changeIndicatorDots: function (e) {
     this.setData({
@@ -88,12 +129,20 @@ Page({
     })
   },
   // 添加购物车
-  addProductToCart () {
-    
+  addProductToCart (e) {
+    console.log(999, this.data.productCartData)
+    addProductToCart(this.data.productCartData)
+    this.setCartProductLength()
   },
   /**
    * 生命周期函数--监听页面卸载
    */
+  goToCartPage() {
+    console.log(3333)
+    wx.navigateTo({
+      url: '/pages/cart/cart',
+    })
+  },
   onUnload: function () {
 
   },

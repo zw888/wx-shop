@@ -175,11 +175,14 @@
   font-size: 20rpx;
 }
 .jieshau{
-    background: -webkit-linear-gradient( -173deg, rgb(5,5,93) 0%, rgb(78,20,122) 4%, rgb(151,34,150) 37%, rgb(196,46,194) 97%); /* Safari 5.1 - 6.0 */
+    background: -webkit-linear-gradient( -180deg, rgb(78,20,122) 4%, rgb(151,34,150) 37%, rgb(196,46,194) 97%); /* Safari 5.1 - 6.0 */
   height: 100%;
   padding: 0 60rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
+}
+.jieshau.noSelected {
+  background: #BBBBBB;
 }

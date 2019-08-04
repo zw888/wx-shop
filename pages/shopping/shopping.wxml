@@ -38,7 +38,7 @@ scroll-x='{{true}}' class='class-type'>
   <!-- product-list -->
   <view class='list-box'>
     <view class='list-item' wx:for='{{productList}}' wx:key='index'>
-      <view class='product-box' bindtap='toOtherPage' data-id='{{index}}'>
+      <view class='product-box' bindtap='toOtherPage' data-id='{{item.id}}'>
         <image class='product-img' src='{{item.imageUrl}}'></image>
         <view>{{item.name}}</view>
         <view>{{item.tag}}</view>
@@ -65,7 +65,4 @@ scroll-x='{{true}}' class='class-type'>
         </view>
     </view>
   </view>
-
-
-  <i-toast id="toast" />
 </view>
