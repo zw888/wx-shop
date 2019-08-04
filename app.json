@@ -1,16 +1,17 @@
 {
   "pages": [
+    "pages/shopping/shopping",
+    "pages/login/login",
+    "pages/setAddress/setAddress",
+    "pages/address/address",
+    "pages/order/order",
     "pages/cart/cart",
     "pages/product/product",
-    "pages/shopping/shopping",
     "pages/home/home",
     "pages/dingzhi/dingzhi",    
     "pages/community/community",
     "pages/user/user",       
-    "pages/login/login",
-    "pages/logs/logs",
-    "pages/address/address",
-    "pages/setAddress/setAddress"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

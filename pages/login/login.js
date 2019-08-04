@@ -1,6 +1,12 @@
 // pages/login/login.js
-import {getCode} from '../../utils/util.js'
-import ajax, { getSessionUrl, getPhoneNumberUrl} from '../../utils/api.js'
+import {
+  getCode
+} from '../../utils/util.js'
+import ajax, {
+  getSessionUrl,
+  getPhoneNumberUrl,
+  phoneLoginUrl
+} from '../../utils/api.js'
 Page({
 
   /**
@@ -17,7 +23,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function() {
     console.log(3333, getApp())
   },
   handleShowModal: function() {
@@ -26,10 +32,13 @@ Page({
       showModal: !this.data.showModal
     })
   },
-  getPhoneNumber: function (e) {
-   console.log('手机号码', e)
-    const { encryptedData, iv } = e.detail
-    getCode().then(code=>{
+  getPhoneNumber: function(e) {
+    console.log('手机号码', e)
+    const {
+      encryptedData,
+      iv
+    } = e.detail
+    getCode().then(code => {
       console.log(code)
       const data = {
         code,
@@ -38,40 +47,66 @@ Page({
         birthday: ''
       }
       ajax(getSessionUrl, data, 'POST').then(
-        res=>{
-          console.log(3333, res.data.content.openid)
+        res => {
+          const openid = res.data.content.openid
           const phoneParams = {
             encryptedData,
-            openId: res.data.content.openid,
+            openId: openid,
             iv
           }
           ajax(getPhoneNumberUrl, phoneParams, 'POST').then(
-            res=>{
+            res => {
               console.log(res)
-              const {data} = res
-              if(data.code === '0') {
-                const phoneObj = JSON.parse(data.content)
-                wx.setStorageSync('phoneNumber', phoneObj.phoneNumber)
-                
-                wx.showToast({
-                  title: '微信登录成功',
-                  complete: () => {
-                    setTimeout(() => {
-                      wx.navigateTo({
-                        url: '/pages/index/index',
+              const {
+                data
+              } = res
+              if (data.code === '0') {
+                const {
+                  phoneNumber
+                } = data.content
+                const phoneObj = JSON.stringify(data.content)
+                wx.setStorageSync('phoneNumber', data.content.phoneNumber)
+
+                if (openid) {
+                  ajax(phoneLoginUrl, {
+                    phone: phoneNumber,
+                    openId: openid
+                  }, 'POST').then(res => {
+                    if (res.data.code === 200) {
+                      console.log(22222, res)
+                      wx.setStorageSync('Authorization', res.header.Authorization)
+                      wx.showToast({
+                        title: res.data.msg,
+                        complete: () => {
+                          setTimeout(() => {
+                            wx.showToast({
+                              title: '微信登录成功',
+                              complete: () => {
+                                setTimeout(() => {
+                                  wx.navigateTo({
+                                    url: '/pages/shopping/shopping',
+                                  })
+                                }, 1000)
+                              }
+                            })
+                          })
+                        }
                       })
-                    }, 1000)
-                  }
-                })
+                    }
+                  }).catch(err => {
+                    throw new Error(err)
+                  })
+                }
+
               }
             }
           ).catch(
-            err=>{
+            err => {
               console.log(err)
             }
-          )          
+          )
         }
-      ).catch(res=>{
+      ).catch(err => {
         console.log(err)
       })
     }).catch(
@@ -88,49 +123,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

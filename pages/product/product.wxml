@@ -76,10 +76,10 @@
 
 	<!-- 底部快按钮 -->
 	<view class="fix-cart">
-			<image src='../../images/details/cart_icon.png' class='fix-cart-icon' />
+			<image src='../../images/details/cart_icon.png' class='fix-cart-icon'  bindtap='addProductToCart' />
 	</view>
 	<view class="fix-return-top">
-		<image src='../../images/details/return_top_icon.png' class='fix-return-icon' />
+		<image src='../../images/details/return_top_icon.png' class='fix-return-icon' bindtap='returnTopClick' />
 	</view>
 
 	<!-- 底部工具栏 -->

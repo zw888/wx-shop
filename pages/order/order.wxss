@@ -1,31 +1,66 @@
-/* youhu */
-.cart-page{
-
+/* pages/order/order.wxss */
+/* address */
+page{
+  background: rgb(248, 248, 248);
 }
-.youhu{
-  color: #999999;
-  line-height: 1;
+.address{
+  background: #fff;
+  border-top: 1rpx solid #eee;
+  height: 100rpx;
   display: flex;
-  padding: 0 30rpx;
   justify-content: space-between;
-  height: 65rpx;
   align-items: center;
-  border-bottom: 1rpx solid #eee;
-}
-.youhu-right{
-  display: flex;
-  align-items: center;
+  padding: 0 20rpx;
 }
 .right-icon{
   width: 15rpx;
   height: 22rpx;
-  margin-left: 15rpx;
+}
+.address-icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.user-desc{
+  font-size: 22rpx;
+  color: #999;
+  margin-left: 40rpx;
+  margin-top: 5rpx;
+}
+.address-desc{
+  display: flex;
+  align-items: center;
+}
+.user-desc text{
+  margin-right: 15rpx;
 }
 
+/* vip */
+.vip{
+  margin-top: 30rpx;
+  background: #fff;
+  font-size: 24rpx;
+  color: #b229aa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15rpx 20rpx;
+}
+
+/* product */
+.product-box{
+  background: #fff;
+  border-top: 1rpx solid #f3f3f3;
+}
+.title{
+  padding: 15rpx 20rpx;
+  color: #888;
+}
 
 /* cart-list */
 .cart{
   display: flex;
+  border-top: 1rpx solid #eee;
   align-items: center;
   justify-content: space-between;
   padding:30rpx 20rpx;
@@ -50,8 +85,6 @@
   width: 22rpx;
   height: 22rpx;
 }
-
-
 .cart-left{
   display: flex;
   align-items: center;
@@ -128,11 +161,68 @@
   border-top-left-radius: 8rpx;
   border-bottom-left-radius: 8rpx;
 }
+.message{
+  display: flex;
+  color: #888;
+  justify-content: space-between;
+  align-items: center;
+  padding:15rpx 20rpx;
+  border-top: 1rpx solid #eee;
+}
+.msg{
+  color: #333;
+  margin-left: 40rpx;
+  flex: 1;
+}
+.order-intr{
+  border-top: 1rpx solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding:15rpx 20rpx;
+  color: #888;
+}
+.money-icon{
+  width: 20rpx;
+  height: 16rpx;
+}
+.price{
+  margin: 0 40rpx;
+}
+.primary{
+  color: #b229aa;
+}
+.china-money{
+  font-size: 20rpx;
+}
 
+/* 配送方式  */
+.delivery{
+  border-bottom: 1rpx solid #eee;
+  margin-top: 30rpx;
+}
+.flex{
+  color: #888;
+  display: flex;
+  justify-content: space-between;
+  padding:15rpx 20rpx;
+  align-items: center;
+  background: #fff;
+}
+.flex .right-area{
+   display: flex;
+  align-items: center;
+}
+.right-area image{
+  margin-left: 20rpx;
+}
 
 
 /* bottom */
 .bottom{
+  font-size: 24rpx;
+  font-weight: bold;
+  padding-left: 20rpx;
   position: fixed;
   left:0;
   right:0;
@@ -143,36 +233,10 @@
   align-items: center;
   justify-content: space-between;
   border-top: 1rpx solid #eee;
-  font-size: 28rpx;
 }
-.bottom-select-box{
-  line-height: 1;
+.bottom-item{
   display: flex;
   align-items: center;
-  margin-left: 20rpx;
-}
-.text{
-  margin-right: 15rpx;
-  margin-left: 5rpx;
-}
-.del-text{
-  color: #b229aa;
-}
-.price-box{
-  display: flex;
-  align-items: center;
-}
-.price .text{
-  color: #b229aa;
-  font-weight: bold;
-}
-.price{
-  text-align: center;
-  line-height: 1;
-}
-.price text{
-  color: #999999;
-  font-size: 20rpx;
 }
 .jieshau{
     background: -webkit-linear-gradient( -173deg, rgb(5,5,93) 0%, rgb(78,20,122) 4%, rgb(151,34,150) 37%, rgb(196,46,194) 97%); /* Safari 5.1 - 6.0 */
@@ -181,5 +245,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 28rpx;
   color: #fff;
+}
+.bottom .money-icon{
+  margin-right: 8rpx;
+}
+.bottom .num{
+  font-size: 28rpx;
 }

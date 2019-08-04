@@ -15,7 +15,7 @@
           <checkbox class='checkbox-item' value="{{item.name}}" color='#333' checked="{{item.checked}}  "/>
         </label>
     </checkbox-group>
-    <view>
+    <view bindtap='getProductList'>
       筛选 <i-icon size='20' type="enter" />
     </view>
   </view>
@@ -25,7 +25,7 @@
      <scroll-view 
 scroll-x='{{true}}' class='class-type'>
     <text 
-        class='class-item {{activeClassType === item.id ? "active": "" }}' 
+        class='class-item {{params.orderByFile === item.id ? "active": "" }}' 
         wx:for='{{classTypes}}' 
         wx:key='{{item.id}}'
         data-key='{{item.id}}'
@@ -37,25 +37,27 @@ scroll-x='{{true}}' class='class-type'>
 
   <!-- product-list -->
   <view class='list-box'>
-    <view class='list-item' wx:for='item in [1,2,3,4,5,6,3,3,23,23,4]' wx:key='index'>
+    <view class='list-item' wx:for='{{productList}}' wx:key='index'>
       <view class='product-box' bindtap='toOtherPage' data-id='{{index}}'>
-        <image class='product-img' src='../../images/product1.jpg'></image>
-        <view>精华液修</view>
-        <view>新品.限时.定制</view>
+        <image class='product-img' src='{{item.imageUrl}}'></image>
+        <view>{{item.name}}</view>
+        <view>{{item.tag}}</view>
         </view>
         <view class='desc'>
           <view class='price-box'>
             <view class='old-price'>
              ￥
-            <text class='num'>425.00</text>
+            <text class='num'>{{item.oldPrice}}</text>
             </view>
             <view class='left-desc'>
-              <text class='current-price bold'>￥425.00</text>
+              <text class='current-price bold'>￥{{item.vipPrice}}</text>
               <image class='price-icon' src='../../images/common/price_icon.png'></image>
               <text class='text'>代言人价</text>
             </view>
           </view>
-          <view  class='cart-box'>
+          <view  class='cart-box' bindtap='addProductToCart'
+          data-item='{{item}}'
+          >
              <view class='cart-inner-box'>
               <image class='cart' src='../../images/shop/white_cart_icon.png'></image>
             </view>
@@ -63,4 +65,7 @@ scroll-x='{{true}}' class='class-type'>
         </view>
     </view>
   </view>
+
+
+  <i-toast id="toast" />
 </view>

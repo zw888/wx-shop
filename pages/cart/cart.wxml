@@ -57,7 +57,14 @@
       <view class='del-text'>删除</view>
     </view>
     <view class='price-box'>
-        <view class=''></view>
+        <view>合计：</view> 
+        <view class='price'>
+          <view  class='text'>￥189.00</view>   
+          <text>(含运费)</text>
+        </view>
+    </view>
+    <view class='jieshau'>
+      结算（01）
     </view>
   </view>
 </view>

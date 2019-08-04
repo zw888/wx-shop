@@ -1,1 +1,38 @@
 /* pages/setAddress/setAddress.wxss */
+.address-box{
+  margin: 30rpx 0;
+  background: #fff;
+}
+.input-box{
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.title{
+  width: 160rpx;
+}
+.right-icon{
+  width: 15rpx;
+  height: 22rpx;
+}
+.address-right{
+  padding:5rpx 15rpx 5rpx 30rpx;
+}
+.input-rt{
+  flex:1;
+}
+
+.save-btn{
+  color: #fff;
+  background: rgb(152,152,152);
+  width: 690rpx;
+  margin: 30rpx auto;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 15rpx 0;
+  border-radius: 10rpx;
+}

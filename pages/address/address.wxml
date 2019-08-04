@@ -1,2 +1,22 @@
 <!--pages/address/address.wxml-->
-<text>pages/address/address.wxml</text>
+<view class='my-address-page'>
+  <view class='address-item' wx:for='1234' >
+    <view class='address-left'>
+      <view class='selected'></view>
+      <view class='address-info'>
+        <view class='address-top'>上海市黄浦区123弄56号78室</view>
+        <view class='user-bot'>
+          <text class='user'>小工子</text>
+          <text class='phone'>1234354545</text>
+        </view>
+      </view>
+    </view>
+    <view class='edit-box'>
+      <image src='../../images/address/edit_icon.png' class='edit-icon'></image>
+    </view>
+  </view>
+
+  <view class='bottom-btn'>
+    <image class='add-icon' src='../../images/address/add_address_icon.png'></image>
+  </view>
+</view>

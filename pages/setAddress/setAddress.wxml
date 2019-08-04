@@ -1,2 +1,41 @@
-<!--pages/setAddress/setAddress.wxml-->
-<text>pages/setAddress/setAddress.wxml</text>
+<view class='set-address-page'>
+  <view class='address-box'>
+    <view class='input-box'>
+      <view class='title'>
+        收货地址
+      </view>
+      <view class='input-rt'>
+          <input placeholder="小区 \\ 写字楼 \\ 学校" focus="{{focus}}" />
+      </view>
+       <view class='address-right'>
+      <image class='right-icon' src='../../images/common/right_icon.png'></image>
+    </view>
+    </view>
+    <view class='input-box'>
+       <view class='title'>
+        门牌号
+      </view>
+      <view class='input-rt'>
+          <input placeholder="例：1楼23号" focus="{{focus}}" />
+      </view>
+    </view>
+    <view class='input-box'>
+       <view class='title'>
+        收货人
+      </view>
+      <view class='input-rt'>
+          <input placeholder="收获人姓名" focus="{{focus}}" />
+      </view>
+    </view>
+    <view class='input-box'>
+       <view class='title'>
+        手机号
+      </view>
+      <view class='input-rt'>
+          <input placeholder="配送员联系您的手机号" focus="{{focus}}" />
+      </view>
+    </view>
+  </view>
+
+  <view class='save-btn'>保   存</view>
+</view>

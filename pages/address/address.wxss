@@ -1,1 +1,52 @@
 /* pages/address/address.wxss */
+page{
+  background: rgb(248, 248, 248)
+}
+.address-item{
+  padding: 20rpx;
+  background: #fff;
+  margin: 30rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.address-left{
+  align-items: center;
+  display: flex;
+}
+.selected{
+  width: 32rpx;
+  background: #b229aa;
+  border-radius: 50%;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+.address-top{
+}
+.user-bot{
+  color: #999999;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+}
+.user-bot .user{
+  margin-right: 20rpx;
+}
+.edit-box{
+  padding: 20rpx 40rpx;
+}
+.edit-icon{
+  width: 30rpx;
+  height: 30rpx;
+}
+.bottom-btn{
+  position: fixed;
+  bottom: 30rpx;
+  left:0;
+  right:0;
+  display: flex;
+  justify-content: center;
+}
+.add-icon{
+  width: 690rpx;
+  height: 71rpx;
+}

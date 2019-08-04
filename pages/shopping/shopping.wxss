@@ -1,4 +1,5 @@
 .shopping{
+  background: #fff
 }
 /* 搜索 */
 .input-box {

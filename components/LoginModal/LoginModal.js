@@ -50,7 +50,7 @@ Component({
                     complete: () => {
                      setTimeout(()=>{
                        wx.navigateTo({
-                         url: '/pages/index/index',
+                         url: '/pages/shopping/shopping',
                        })
                      }, 1000)
                     }
