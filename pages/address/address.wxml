@@ -1,17 +1,18 @@
 <!--pages/address/address.wxml-->
 <view class='my-address-page'>
-  <view class='address-item' wx:for='1234' >
-    <view class='address-left'>
-      <view class='selected'></view>
+  <view class='address-item' wx:for='{{addressList}}' wx:key='{{item.id}}' >
+    <view class='address-left' bindtap="switchActiveAddress" data-id='{{item.id}}'>
+      <view class="selected" wx:if='{{!item.isSelected}}'></view>
+      <view class='selected selected-bg' wx:else></view>
       <view class='address-info'>
-        <view class='address-top'>上海市黄浦区123弄56号78室</view>
+        <view class='address-top'>{{item.address + item.detailAddress}}</view>
         <view class='user-bot'>
-          <text class='user'>小工子</text>
-          <text class='phone'>1234354545</text>
+          <text class='user'>{{item.username}}</text>
+          <text class='phone'>{{item.phoneNumber}}</text>
         </view>
       </view>
     </view>
-    <view class='edit-box'>
+    <view class='edit-box' bindtap='editActiveAddress' data-address ='{{item}}'>
       <image src='../../images/address/edit_icon.png' class='edit-icon'></image>
     </view>
   </view>

@@ -1,7 +1,7 @@
 <!-- 订单页面 -->
 <view class='order-page'>
   <!-- address -->
-  <view class='address'>
+  <view class='address' bindtap="goToAddressPage">
     <view class='address-left'>
       <view class='address-desc'>
         <image class='address-icon' src='../../images/order/address_icon.png'></image>
@@ -26,18 +26,18 @@
   <!-- 购物清单 -->
   <view class='product-box'>
     <view class='title'>购物清单</view>
-    <view class='cart' wx:for='12'>
-      <view class='select-box'>
-        <view class='cart-select selected'>
+
+    <view class='cart' wx:for='{{cartProductList}}' wx:key='{{item.id}}'>
+      <view bindtap='switchIsSelectd' class='select-box' data-index='{{index}}'>
+        <view class='cart-select selected-bg'>
         </view>
       </view>
       <view class='cart-desc'>
-        <image src='../../images/product1.jpg' class='product-img'></image>
+        <image src='{{item.imageUrl}}' class='product-img'></image>
         <view class='cart-intr'>
-          <view class='cart-title'>即时燕窝</view>
+          <view class='cart-title'>{{item.name}}</view>
           <view class='cart-tag'>
-            <view class='cart-tag-item'>精心炖煮</view>
-            <view class='cart-tag-item'>精心炖煮</view>
+            <view class='cart-tag-item'>{{item.tag}}</view>
           </view>
           <view class='cart-class'>
             <view class='cart-class-left'>
@@ -45,10 +45,10 @@
               <view class='cart-class-item'>仅限VIP会员</view>
             </view>
             <view class='cart-num'>
-              <view class='add-box'>
+              <view class='add-box' >
                 <image class='icon' src='../../images/cart/minus_icon.png'></image>
               </view>
-              <view class='num-box'>1</view>
+              <view class='num-box'>{{item.num}}</view>
               <view class='minus-box'>
                 <image class='icon' src='../../images/cart/add_icon.png'></image>
               </view>
@@ -57,18 +57,19 @@
         </view>
       </view>
     </view>
+
     <view class='message'>
       买家留言
-      <view class='msg'>超标要枯森地</view>
+       <textarea class="msg" bindblur="bindTextAreaBlur" auto-height placeholder="请输入买家留言" />
     </view>
 
     <view class='order-intr'>
       <view>共
-        <text> 2 </text>件商品
+        <text> {{selectedCartProductAllNum}} </text>件商品
       </view>
       <view class='price'>合计：
         <text class='china-money primary'>￥</text>
-        <text class='primary'>189.00</text>
+        <text class='primary'>{{cartProductAllPrice}}</text>
       </view>
       <view>
         <image class='money-icon' src='../../images/order/money_icon.png'></image>
@@ -94,17 +95,17 @@
   <!-- fix-bottom -->
   <view class='bottom'>
     <view class='bottom-item'>待支付：
-    <view>
+      <view>
         <text class='china-money primary'>￥</text>
-        <text class='primary num'>189.00</text>
-    </view>
+        <text class='primary num'>{{cartProductAllPrice}}</text>
       </view>
-       <view class='bottom-item'>获得小艳贝：
-       <view>
+    </view>
+    <view class='bottom-item'>获得小艳贝：
+      <view>
         <image class='money-icon' src='../../images/order/money_icon.png'></image>
         <text class='primary num'>20</text>
-       </view>
       </view>
+    </view>
     <view class='jieshau '>
       提交订单
     </view>

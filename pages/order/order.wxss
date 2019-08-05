@@ -2,6 +2,7 @@
 /* address */
 page{
   background: rgb(248, 248, 248);
+  padding-bottom: 120rpx;
 }
 .address{
   background: #fff;

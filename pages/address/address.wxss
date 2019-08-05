@@ -16,12 +16,10 @@ page{
 }
 .selected{
   width: 32rpx;
-  background: #b229aa;
+  border: 1rpx solid #ccc;
   border-radius: 50%;
   height: 32rpx;
   margin-right: 20rpx;
-}
-.address-top{
 }
 .user-bot{
   color: #999999;

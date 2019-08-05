@@ -1,0 +1,7 @@
+<view>
+  <view class="shi-item" wx:for='{{shiList}}' wx:key='{{item.adcode}}' bindtap="toXianList"
+  data-adcode='{{item.adcode}}' data-name='{{item.name}}'>
+      <view>{{item.name}}</view>
+      <image src='../../../images/common/right_icon.png' class='right-icon' />
+  </view>
+</view>

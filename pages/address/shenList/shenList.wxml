@@ -1,0 +1,9 @@
+<!--pages/shenList/shenList.wxml-->
+<view>
+  <view class="shen-item" wx:for='{{shenList}}' wx:key='{{item.adcode}}' bindtap="toShiList"
+  data-adcode='{{item.adcode}}' data-name='{{item.name}}'
+  >
+      <view>{{item.name}}</view>
+      <image src='../../../images/common/right_icon.png' class='right-icon' />
+  </view>
+</view>

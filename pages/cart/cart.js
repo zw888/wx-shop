@@ -199,7 +199,7 @@ Page({
 
   },
   onHide() {
-
+    wx.setStorageSync('cartProductList', this.data.cartProductList)
   },
   onUnload() {
     wx.setStorageSync('cartProductList', this.data.cartProductList)

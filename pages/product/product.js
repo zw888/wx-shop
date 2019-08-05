@@ -8,11 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
+    // 商品详情
+    productInfo: {
+    },
+    // 规格
+    productClassInfo: [
     ],
+    // banner图片
+    bannerImgUrls: [],
+    // 详情图片
+    detailsImgUrls: [],
     indicatorDots: false,
     autoplay: false,
     interval: 5000,
@@ -31,17 +36,6 @@ Page({
       price: '189.00',
       vipPirce: '160.00',
       name: '即时燕窝',
-      intrArr: [
-        { name: '精心炖煮' },
-        { name: '开盖即食' },
-        { name: '精心炖煮' },
-        { name: '开盖即食' },
-        { name: '精心炖煮' },
-        { name: '开盖即食' },
-        { name: '精心炖煮' },
-        { name: '开盖即食' },
-        { name: '精心炖煮' },
-      ],
       size: ['10g', '50g', '100g'],
     },
     activeClassIndex: 0,
@@ -92,9 +86,21 @@ Page({
       id
     }
     ajax(getProdDetailUrl, params, 'GET').then(
-      res=>{
+      data=>{
         wx.hideToast()
-        console.log('productDetails', res)
+        console.log('productDetails', data)
+        this.setData({
+          productInfo: data.content.productDetail,
+          productClassInfo: data.content.specsList
+        }, ()=>{
+          const { productInfo } = this.data
+          const bannerImgUrls = productInfo.prodPic.split(',')
+          const detailsImgUrls = productInfo.prodDetail.split(',')
+          this.setData({
+            bannerImgUrls,
+            detailsImgUrls
+          })
+        })
       }
     ).catch(err=>{
       wx.hideToast()

@@ -1,27 +1,40 @@
-// pages/setAddress/setAddress.js
+// pages/shiList/shiList.js
+import ajax, { getShiListUrl } from '../../../utils/api.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    activeAddress:{
-      id: '',
-      address: '',
-      detailAddress: '',
-      phoneNumber: '',
-      username: ''
-    },
-    isCanSave: true,
+    shiList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.updateActiveAddress()
+    console.log(options.adcode)
+    this.getShiList(options.adcode) 
   },
-
+  getShiList(adcode) {
+    ajax(getShiListUrl + `${adcode}_city.json`, {}, 'GET').then(data => {
+      console.log('getShiListUrl', data)
+      this.setData({
+        shiList: data.rows
+      })
+    }).catch(err => {
+      console.log(err)
+    })
+  },
+  toXianList(e) {
+    const { adcode, name } = e.currentTarget.dataset
+    const shenArr = wx.getStorageSync('mySelectedAddressArr')
+    const addressArr = [...shenArr, name]
+    wx.setStorageSync('mySelectedAddressArr', addressArr)
+    wx.navigateTo({
+      url: '/pages/address/xianList/xianList?adcode=' + adcode
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -69,23 +82,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  updateActiveAddress() {
-    const addressObj = wx.getStorageSync('editAddressItem')
-    const selectedAddress = wx.getStorageSync('mySelectedAddressArr')
-    if (selectedAddress) {
-      this.setData({
-        activeAddress: { ...this.data.activeAddress, address: selectedAddress.join('\\') }
-      })
-    } else {
-      this.setData({
-        activeAddress: { ...this.data.activeAddress, ...addressObj }
-      })
-    }
-  },
-  toSelectAddress() {
-    wx.navigateTo({
-      url: '/pages/address/shenList/shenList',
-    })
   }
 })

@@ -5,9 +5,9 @@
         收货地址
       </view>
       <view class='input-rt'>
-          <input placeholder="小区 \\ 写字楼 \\ 学校" focus="{{focus}}" />
+          <input placeholder="小区 \\ 写字楼 \\ 学校" focus="{{focus}}" value="{{activeAddress.address}}" />
       </view>
-       <view class='address-right'>
+       <view class='address-right' bindtap="toSelectAddress">
       <image class='right-icon' src='../../images/common/right_icon.png'></image>
     </view>
     </view>
@@ -16,7 +16,7 @@
         门牌号
       </view>
       <view class='input-rt'>
-          <input placeholder="例：1楼23号" focus="{{focus}}" />
+          <input placeholder="例：1楼23号" focus="{{focus}}" value="{{activeAddress.detailAddress}}" />
       </view>
     </view>
     <view class='input-box'>
@@ -24,7 +24,9 @@
         收货人
       </view>
       <view class='input-rt'>
-          <input placeholder="收获人姓名" focus="{{focus}}" />
+          <input placeholder="收获人姓名" focus="{{focus}}"
+          value="{{activeAddress.username}}"
+           />
       </view>
     </view>
     <view class='input-box'>
@@ -32,10 +34,11 @@
         手机号
       </view>
       <view class='input-rt'>
-          <input placeholder="配送员联系您的手机号" focus="{{focus}}" />
+          <input placeholder="配送员联系您的手机号" focus="{{focus}}" value="{{activeAddress.phoneNumber}}"
+           />
       </view>
     </view>
   </view>
 
-  <view class='save-btn'>保   存</view>
+  <view class='save-btn {{isCanSave? "base-bg":""}}'>保   存</view>
 </view>

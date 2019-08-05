@@ -27,7 +27,6 @@ Page({
     console.log(3333, getApp())
   },
   handleShowModal: function() {
-    console.log(111)
     this.setData({
       showModal: !this.data.showModal
     })
@@ -39,7 +38,6 @@ Page({
       iv
     } = e.detail
     getCode().then(code => {
-      console.log(code)
       const data = {
         code,
         nikeName: getApp().globalData.userInfo.nickName,
@@ -48,18 +46,16 @@ Page({
       }
       ajax(getSessionUrl, data, 'POST').then(
         res => {
-          const openid = res.data.content.openid
+          
+          const openid = res.content.openid
           const phoneParams = {
             encryptedData,
             openId: openid,
             iv
           }
           ajax(getPhoneNumberUrl, phoneParams, 'POST').then(
-            res => {
-              console.log(res)
-              const {
-                data
-              } = res
+            data => {
+             
               if (data.code === '0') {
                 const {
                   phoneNumber
@@ -71,29 +67,21 @@ Page({
                   ajax(phoneLoginUrl, {
                     phone: phoneNumber,
                     openId: openid
-                  }, 'POST').then(res => {
-                    if (res.data.code === 200) {
-                      console.log(22222, res)
-                      wx.setStorageSync('Authorization', res.header.Authorization)
+                  }, 'POST').then(data => {
+                    if (data.code === 200) {
                       wx.showToast({
-                        title: res.data.msg,
+                        title: data.msg,
                         complete: () => {
                           setTimeout(() => {
-                            wx.showToast({
-                              title: '微信登录成功',
-                              complete: () => {
-                                setTimeout(() => {
-                                  wx.navigateTo({
-                                    url: '/pages/shopping/shopping',
-                                  })
-                                }, 1000)
-                              }
+                            wx.switchTab({
+                              url: '/pages/shopping/shopping'
                             })
                           })
                         }
                       })
                     }
                   }).catch(err => {
+                    console.log(err)
                     throw new Error(err)
                   })
                 }

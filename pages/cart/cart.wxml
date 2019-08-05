@@ -14,7 +14,7 @@
     <view bindtap='switchIsSelectd' class='select-box' data-index='{{index}}'>
       <view wx:if='{{!item.selected}}' class='cart-select'>
       </view>
-      <view wx:else class='cart-select selected'>
+      <view wx:else class='cart-select selected-bg'>
       </view>
     </view>
     <view class='cart-desc'>
@@ -49,7 +49,7 @@
       <view  bindtap='setAllSelectd' class='select-box' >
         <view wx:if='{{!isAllSelected}}' class='cart-select'>
         </view>
-        <view wx:else class='cart-select selected'>
+        <view wx:else class='cart-select selected-bg'>
         </view>
       </view>
       <view class='text'>全选</view>

@@ -1,0 +1,14 @@
+/* pages/xianList/xianList.wxss */
+.xian-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  align-items: center;
+  border-top: 1rpx solid #eee;
+}
+.right-icon{
+  width: 15rpx;
+  height: 22rpx;
+  margin-left: 15rpx;
+}

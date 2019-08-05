@@ -12,7 +12,7 @@
     <checkbox-group bindchange="checkboxChange">
         <label class="checkbox-text" wx:for="{{items}}" wx:key='{{item.name}}'>
         {{item.value}}
-          <checkbox class='checkbox-item' value="{{item.name}}" color='#333' checked="{{item.checked}}  "/>
+          <checkbox class='checkbox-item' value="{{item.name}}" color='#333' checked="{{item.checked}}"/>
         </label>
     </checkbox-group>
     <view bindtap='getProductList'>
@@ -25,12 +25,12 @@
      <scroll-view 
 scroll-x='{{true}}' class='class-type'>
     <text 
-        class='class-item {{params.orderByFile === item.id ? "active": "" }}' 
+        class='class-item {{params.typeCode === item.typeCode ? "active": "" }}' 
         wx:for='{{classTypes}}' 
-        wx:key='{{item.id}}'
-        data-key='{{item.id}}'
+        wx:key='{{item.typeCode}}'
+        data-key='{{item.typeCode}}'
         bindtap='switchClassType'
-        >{{item.className}}</text>
+        >{{item.typeName}}</text>
   </scroll-view>
   </view>
  
@@ -39,18 +39,17 @@ scroll-x='{{true}}' class='class-type'>
   <view class='list-box'>
     <view class='list-item' wx:for='{{productList}}' wx:key='index'>
       <view class='product-box' bindtap='toOtherPage' data-id='{{item.id}}'>
-        <image class='product-img' src='{{item.imageUrl}}'></image>
-        <view>{{item.name}}</view>
-        <view>{{item.tag}}</view>
+        <image class='product-img' src='{{item.smallPic}}'></image>
+        <view>{{item.prodName}}</view>
+        <view>{{item.prodLabel}}</view>
         </view>
         <view class='desc'>
           <view class='price-box'>
             <view class='old-price'>
-             ￥
-            <text class='num'>{{item.oldPrice}}</text>
+             ￥<text class='num'>{{item.originalPrice}}</text>
             </view>
             <view class='left-desc'>
-              <text class='current-price bold'>￥{{item.vipPrice}}</text>
+              <text class='current-price bold'>￥{{item.curentPrice}}</text>
               <image class='price-icon' src='../../images/common/price_icon.png'></image>
               <text class='text'>代言人价</text>
             </view>

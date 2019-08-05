@@ -1,6 +1,7 @@
 /* youhu */
 .cart-page{
-
+  background: #fff;
+  margin-bottom: 120rpx;
 }
 .youhu{
   color: #999999;
@@ -42,10 +43,7 @@
 .select-box{
   padding: 10rpx;
 }
-.selected{
-  border: 1rpx solid #b229aa;
-  background: #b229aa;
-}
+
 .sure-icon{
   width: 22rpx;
   height: 22rpx;

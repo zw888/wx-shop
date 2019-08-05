@@ -1,0 +1,6 @@
+<view>
+  <view class="xian-item" wx:for='{{xianList}}' wx:key='{{item.adcode}}' data-name='{{item.name}}' bindtap="toSetAddressPage">
+      <view>{{item.name}}</view>
+      <image src='../../../images/common/right_icon.png' class='right-icon' />
+  </view>
+</view>
