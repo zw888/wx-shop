@@ -53,7 +53,7 @@ Page({
     } = this.data
     let sum = 0.00
     cartProductList.forEach((item) => {
-      sum += item.vipPrice * item.num
+      sum += item.curentPrice * item.num
     })
     console.log(sum)
     this.setData({

@@ -18,11 +18,11 @@
       </view>
     </view>
     <view class='cart-desc'>
-      <image src='{{item.imageUrl}}' class='product-img'></image>
+      <image src='{{item.smallPic}}' class='product-img'></image>
       <view class='cart-intr'>
-        <view class='cart-title'>{{item.name}}</view>
+        <view class='cart-title'>{{item.prodName}}</view>
         <view class='cart-tag'>
-          <view class='cart-tag-item'>{{item.tag}}</view>
+          <view class='cart-tag-item'>{{item.prodLabel}}</view>
         </view>
         <view class='cart-class'>
           <view class='cart-class-left'>

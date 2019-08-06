@@ -158,7 +158,7 @@ Page({
     const selectedCartProductList = cartProductList.filter((item) => item.selected)
     let sum = 0.00
     selectedCartProductList.forEach((item) => {
-      sum += item.vipPrice * item.num
+      sum += item.curentPrice * item.num
     })
     console.log(sum)
     this.setData({
