@@ -32,9 +32,7 @@ Page({
     const shenArr = wx.getStorageSync('mySelectedAddressArr')
     const addressArr = [...shenArr, name]
     wx.setStorageSync('mySelectedAddressArr', addressArr)
-    wx.navigateTo({
-      url: '/pages/setAddress/setAddress',
-    })
+    wx.navigateBack()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

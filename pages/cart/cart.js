@@ -12,7 +12,8 @@ Page({
     selectedCartProductAllNum: 0
   },
 
-  onLoad() {
+  onShow() {
+    wx.removeStorageSync('orderProductList')
     this.getCartProductList()
   },
   getCartProductList() {
@@ -34,7 +35,6 @@ Page({
       this.updateIsAllSelected()
       this.setCartProductAllPrice()
       this.setSelectedCartProductAllNum()
-      console.log(this.data.cartProductList)
     })
   },
   // 切换选中状态
@@ -200,10 +200,12 @@ Page({
   },
   onHide() {
     wx.setStorageSync('cartProductList', this.data.cartProductList)
+    const orderProductList = this.data.cartProductList.filter((item) => item.selected)
+    wx.setStorageSync('orderProductList', orderProductList)
   },
-  onUnload() {
-    wx.setStorageSync('cartProductList', this.data.cartProductList)
-  },
+  // onUnload() {
+  //   wx.setStorageSync('cartProductList', this.data.cartProductList)
+  // },
   /**
    * 页面上拉触底事件的处理函数
    */

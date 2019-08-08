@@ -1,5 +1,20 @@
 .shopping{
-  background: #fff
+  /* background: #fff */
+}
+.top-area{
+  background: #fff;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+}
+.scrollView{
+  position: absolute;
+  top:230rpx;
+  left:0;
+  right:0;
+}
+.bottom-area{
 }
 /* 搜索 */
 .input-box {

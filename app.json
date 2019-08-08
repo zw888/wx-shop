@@ -1,20 +1,19 @@
 {
   "pages": [
     "pages/shopping/shopping",
-    "pages/setAddress/setAddress",
+    "pages/address/address",
     "pages/login/login",
     "pages/address/shenList/shenList",
     "pages/order/order",
-    "pages/address/address",
     "pages/cart/cart",
     "pages/product/product",
     "pages/home/home",
     "pages/dingzhi/dingzhi",    
     "pages/community/community",
+    "pages/address/setAddress/setAddress",
     "pages/address/shiList/shiList",
     "pages/address/xianList/xianList",
-    "pages/user/user",       
-    "pages/logs/logs"
+    "pages/user/user"    
   ],
   "window": {
     "backgroundTextStyle": "light",

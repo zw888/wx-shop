@@ -1,14 +1,11 @@
 // pages/order/order.js
-import {
-  getCartProductList
-} from '../../utils/cart.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    cartProductList: [],
+    orderProductList: [],
     selectedCartProductAllNum: 0,
     cartProductAllPrice:0
 
@@ -18,16 +15,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCartProductList()
+    this.getorderProductList()
   },
 
   // 得到订单列表
-  getCartProductList() {
-    const list = getCartProductList()
-    console.log('orderList', list)
-    const cartProductList = list.filter((item) => item.selected)
+  getorderProductList() {
+    const orderProductList = wx.getStorageSync('orderProductList')
+    console.log('orderProductList', orderProductList)
     this.setData({
-      cartProductList
+      orderProductList
     }, () => {
       this.setCartProductAllPrice()
       this.setSelectedCartProductAllNum()
@@ -36,10 +32,10 @@ Page({
   // 设置选中总数量
   setSelectedCartProductAllNum() {
     const {
-      cartProductList
+      orderProductList
     } = this.data
     let sum = 0
-    cartProductList.forEach((item) => {
+    orderProductList.forEach((item) => {
       sum += item.num
     })
     this.setData({
@@ -49,10 +45,10 @@ Page({
   // 设置产口的价格
   setCartProductAllPrice() {
     const {
-      cartProductList
+      orderProductList
     } = this.data
     let sum = 0.00
-    cartProductList.forEach((item) => {
+    orderProductList.forEach((item) => {
       sum += item.curentPrice * item.num
     })
     console.log(sum)

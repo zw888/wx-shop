@@ -23,6 +23,7 @@
         <view class='cart-title'>{{item.prodName}}</view>
         <view class='cart-tag'>
           <view class='cart-tag-item'>{{item.prodLabel}}</view>
+          <view class='cart-tag-item'>{{item.curentPrice}}</view>
         </view>
         <view class='cart-class'>
           <view class='cart-class-left'>

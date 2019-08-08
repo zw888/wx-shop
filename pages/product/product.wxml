@@ -101,7 +101,7 @@
         </view>
 				<image src='../../images/details/cart_icon.png' class='tool-cart-icon' />
       </view>
-			<view class='tool-submit'>
+			<view class='tool-submit' bindtap="orderOneProduct">
         <image src='../../images/details/can_submit.png' class='submit-icon'/>
       </view>
 		</view>

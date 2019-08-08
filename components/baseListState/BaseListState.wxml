@@ -1,0 +1,21 @@
+
+<view class="state-box">
+  <view wx:if='{{state.loading || tabIndex !== activeIndex}}' class="loading">
+    <image class="loading-icon" src="../../images/common/loading.gif"></image>
+    {{stateText.loadingText}}
+  </view>
+  <view wx:if='{{state.noData && tabIndex === activeIndex}}' class="no-data">
+    <view>
+      {{stateText.noDataText}}
+    </view>
+  </view>
+    <view wx:if='{{state.noMoreData && tabIndex === activeIndex}}' class="no-more-data">
+    {{stateText.noMoreDataText }}
+  </view>
+  <view 
+    wx:if='{{state.loadFail && tabIndex === activeIndex}}' 
+		bindtap='reLoadListData'
+  >
+    {{stateText.loadFailText}}
+  </view>
+</view>

@@ -1,6 +1,13 @@
 // pages/shopping/shopping.js
 import ajax, { getProdListUrl, getProdFirstUrl } from '../../utils/api.js'
 import { addProductToCart} from '../../utils/cart.js'
+const initState = {
+  loading: false,
+  noData: false,
+  loadFail: false,
+  noMoreData: false
+}
+
 Page({
 
   /**
@@ -18,70 +25,144 @@ Page({
       
     ],
     productClassType: [],
+    config: {
+      windowHeight: wx.getSystemInfoSync().windowHeight - (230/wx.getSystemInfoSync().pixelRatio),
+    },
     params: {
       typeCode: '',
       orderByFile: '',
       pageNum: 1,
       pageSize: 10,
-    }
+    },
+    listState: {
+      loading: false,
+      noData: false,
+      loadFail: false,
+      noMoreData: false
+    },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getProductClassType()
-    this.getProductList()
+    console.log(9999, getApp())
   },
   getProductClassType() {
+    this.updateListState('loading', true)
     const params = {
       pageNum: 1,
-      pageSize: 5,
-      orderByFile: 'curentPrice'
+      pageSize: 10,
+      orderByFile: ''
     }
     ajax(getProdFirstUrl, params).then(
       data=>{
         if(data.code === '0') {
+          if (data.content.productList.length) {
+            if (data.content.productList.length < params.pageSize) {
+              this.updateListState('noMoreData', true)
+            } else {
+              this.updateListState('loading', false)
+            }
+            this.setData({
+              productList: data.content.productList
+            })
+          } else {
+            this.updateListState('noData', true)
+          }
           this.setData({
-            classTypes: data.content.typeList
+            classTypes: data.content.typeList,
           })
         }
       }
     ).catch(err => {
-      console.log(err)
+      this.updateListState('loadFail', true)
     })
   },
-   getProductList() {
-     this.setData({
-       isLoading: true
-     })
-     wx.showToast({
-       title: '加载中',
-       icon: 'loading'
-     })
-    const {params} = this.data
-     ajax(getProdListUrl, params, 'GET').then(
-      data=>{
-        console.log('getProductList', data)
-        if(data.code === '0') {
-          this.setData({
-            productList: data.content
-          })
+
+  getProductList() {
+    const {
+      params
+    } = this.data
+    this.updateListState('loading', true)
+    ajax(getProdListUrl, params).then(
+      data => {
+        if (data.code === '0') {
+          if (data.content.length) {
+            if (data.content.length < params.pageSize) {
+              this.updateListState('noMoreData', true)
+            } else {
+              this.updateListState('loading', false)
+            }
+
+            this.setData({
+              productList: data.content
+            })
+
+          } else {
+            this.updateListState('noData', true)
+          }
         }
-        this.setData({
-          isLoading: false
-        })
-        wx.hideToast();
+      }).catch(err => {
+        this.updateListState('loadFail', true)
+      })
+  },
+  // 更新状态
+  updateListState(type, value) {
+    this.setData({
+      listState: {
+        ...initState,
+        [type]: value,
       }
-    ).catch(
-      err=>{
-        console.log(err)
-        this.setData({
-          isLoading: false
-        })
-        wx.hideToast();
+    })
+  },
+  // 判断是否可执行状态
+  isCanLoadByState() {
+    const { listState } = this.data
+    for (let val in listState) {
+      if (listState[val]) {
+        return false
       }
-    )
+    }
+    return true
+  },
+  // 加载更多
+  loadMoreProductList() {
+    if (!this.isCanLoadByState()) return
+    const {
+      params
+    } = this.data
+    const loadMoreParams = {
+      ...params,
+      pageNum: params.pageNum + 1
+    }
+    this.setData({
+      params: loadMoreParams
+    }, () => {
+      const {
+        params
+      } = this.data
+      this.updateListState('loading', true)
+      ajax(getProdListUrl, params).then(
+        data => {
+          if (data.code === '0') {
+            if (data.content.length) {
+              if (data.content.length < params.limit) {
+                this.updateListState('noMoreData', true)
+              } else {
+                this.updateListState('loading', false)
+              }
+              this.setData({
+                productList: [...this.data.addressList, ...data.content]
+              })
+            } else {
+              this.updateListState('noData', true)
+            }
+          }
+        }).catch(err => {
+          this.updateListState('loadFail', true)
+        })
+    })
   },
   toOtherPage(e) {
     const { id } = e.currentTarget.dataset
@@ -93,15 +174,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res)
+      },
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getProductClassType()
-    this.getProductList()
+    this.getProductClassType(
+    )
   },
 
   /**
@@ -129,14 +214,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('onReachBottom')
-    if(this.data.isLoading) return
-    const { params } = this.data
-    this.setData({
-      params: { ...params, pageNum: params.pageNum +1}
-    }, ()=>{
-      this.getProductList()
-    })
+    this.loadMoreProductList()
   },
 
   /**
@@ -148,8 +226,9 @@ Page({
   checkboxChange: function (e) {
     const { value} = e.detail
     console.log('checkbox发生change事件，携带value值为：', value)
-    if (value.length) {
+    if (value) {
       const orderByFile = value.join(',')
+      console.log(orderByFile)
       this.setData({
         params: {
           ...this.data.params,

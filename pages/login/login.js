@@ -38,6 +38,10 @@ Page({
       iv
     } = e.detail
     getCode().then(code => {
+      wx.showLoading({
+        title: '正在登录...',
+      })
+      console.log(getApp().globalData)
       const data = {
         code,
         nikeName: getApp().globalData.userInfo.nickName,
@@ -55,20 +59,20 @@ Page({
           }
           ajax(getPhoneNumberUrl, phoneParams, 'POST').then(
             data => {
-             
               if (data.code === '0') {
                 const {
                   phoneNumber
                 } = data.content
                 const phoneObj = JSON.stringify(data.content)
                 wx.setStorageSync('phoneNumber', data.content.phoneNumber)
-
                 if (openid) {
                   ajax(phoneLoginUrl, {
                     phone: phoneNumber,
                     openId: openid
                   }, 'POST').then(data => {
                     if (data.code === 200) {
+                      getApp().globalData.userInfo = { ...getApp().globalData.userInfo, ...data.data}
+                      wx.setStorageSync("userInfo", data.data)
                       wx.showToast({
                         title: data.msg,
                         complete: () => {
@@ -76,7 +80,7 @@ Page({
                             wx.switchTab({
                               url: '/pages/shopping/shopping'
                             })
-                          })
+                          },1000)
                         }
                       })
                     }

@@ -2,13 +2,13 @@
 <view class='my-address-page'>
   <view class='address-item' wx:for='{{addressList}}' wx:key='{{item.id}}' >
     <view class='address-left' bindtap="switchActiveAddress" data-id='{{item.id}}'>
-      <view class="selected" wx:if='{{!item.isSelected}}'></view>
+      <view class="selected" wx:if='{{!item.enabled}}'></view>
       <view class='selected selected-bg' wx:else></view>
       <view class='address-info'>
-        <view class='address-top'>{{item.address + item.detailAddress}}</view>
+        <view class='address-top'>{{item.province + item.city + item.county +" "+ item.detail}}</view>
         <view class='user-bot'>
-          <text class='user'>{{item.username}}</text>
-          <text class='phone'>{{item.phoneNumber}}</text>
+          <text class='user'>{{item.customerName}}</text>
+          <text class='phone'>{{item.phone}}</text>
         </view>
       </view>
     </view>
@@ -16,8 +16,8 @@
       <image src='../../images/address/edit_icon.png' class='edit-icon'></image>
     </view>
   </view>
-
-  <view class='bottom-btn'>
+  <base-list-state tabIndex='1' activeIndex="1" state='{{listState}}'  bindloadFailEvent='initAddressList'></base-list-state>
+  <view class='bottom-btn' bindtap="addNewAddress">
     <image class='add-icon' src='../../images/address/add_address_icon.png'></image>
   </view>
 </view>

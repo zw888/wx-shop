@@ -79,7 +79,7 @@ page{
   position: relative;
   text-align: center;
   width: 166rpx;
-  border: 1rpx solid #b229aa;
+  border: 1rpx solid #666;
   border-radius: 6rpx;  
 }
 .active-item{

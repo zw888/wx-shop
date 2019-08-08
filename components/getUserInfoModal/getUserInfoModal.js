@@ -43,7 +43,7 @@ Component({
    */
   methods: {
     getUserInfo: function (e) {
-      getApp().globalData = e.detail.userInfo
+      getApp().globalData.userInfo = e.detail.userInfo
       this.setData({
         noUserInfoScope: false
       })

@@ -27,17 +27,17 @@
   <view class='product-box'>
     <view class='title'>购物清单</view>
 
-    <view class='cart' wx:for='{{cartProductList}}' wx:key='{{item.id}}'>
+    <view class='cart' wx:for='{{orderProductList}}' wx:key='{{item.id}}'>
       <view bindtap='switchIsSelectd' class='select-box' data-index='{{index}}'>
         <view class='cart-select selected-bg'>
         </view>
       </view>
       <view class='cart-desc'>
-        <image src='{{item.imageUrl}}' class='product-img'></image>
+        <image src='{{item.smallPic}}' class='product-img'></image>
         <view class='cart-intr'>
-          <view class='cart-title'>{{item.name}}</view>
+          <view class='cart-title'>{{item.prodName}}</view>
           <view class='cart-tag'>
-            <view class='cart-tag-item'>{{item.tag}}</view>
+            <view class='cart-tag-item'>{{item.prodLabel}}</view>
           </view>
           <view class='cart-class'>
             <view class='cart-class-left'>

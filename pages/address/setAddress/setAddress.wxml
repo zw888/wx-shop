@@ -5,10 +5,10 @@
         收货地址
       </view>
       <view class='input-rt'>
-          <input placeholder="小区 \\ 写字楼 \\ 学校" focus="{{focus}}" value="{{activeAddress.address}}" />
+          <input placeholder="小区 \\ 写字楼 \\ 学校" disabled  value="{{addressText}}" />
       </view>
        <view class='address-right' bindtap="toSelectAddress">
-      <image class='right-icon' src='../../images/common/right_icon.png'></image>
+      <image class='right-icon' src='../../../images/common/right_icon.png'></image>
     </view>
     </view>
     <view class='input-box'>
@@ -16,7 +16,7 @@
         门牌号
       </view>
       <view class='input-rt'>
-          <input placeholder="例：1楼23号" focus="{{focus}}" value="{{activeAddress.detailAddress}}" />
+          <input placeholder="例：1楼23号" bindinput="updateInputValue" data-type='detail' value="{{activeAddress.detail}}" />
       </view>
     </view>
     <view class='input-box'>
@@ -24,8 +24,8 @@
         收货人
       </view>
       <view class='input-rt'>
-          <input placeholder="收获人姓名" focus="{{focus}}"
-          value="{{activeAddress.username}}"
+          <input placeholder="收获人姓名" bindinput="updateInputValue" data-type='customerName'
+          value="{{activeAddress.customerName}}"
            />
       </view>
     </view>
@@ -34,11 +34,11 @@
         手机号
       </view>
       <view class='input-rt'>
-          <input placeholder="配送员联系您的手机号" focus="{{focus}}" value="{{activeAddress.phoneNumber}}"
+          <input placeholder="配送员联系您的手机号" type='number' bindinput="updateInputValue" data-type='phone' value="{{activeAddress.phone}}"
            />
       </view>
     </view>
   </view>
 
-  <view class='save-btn {{isCanSave? "base-bg":""}}'>保   存</view>
+  <view bindtap="handleAddAddressClick" class='save-btn {{isCanSave? "base-bg":""}}'>保   存</view>
 </view>

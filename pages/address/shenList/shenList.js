@@ -31,7 +31,7 @@ Page({
     wx.setStorageSync('mySelectedAddressArr', [])
     const addressArr = [name]
     wx.setStorageSync('mySelectedAddressArr', addressArr)
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/address/shiList/shiList?adcode=' + adcode
     })
   },

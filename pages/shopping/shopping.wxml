@@ -1,67 +1,67 @@
 <view class='shopping'>
-  <!-- 搜索 -->
-  <view class='input-box'>
-    <input class='search-input'  bindinput="bindKeyInput" placeholder="请输入商品"/>
-    <view class='search-icon-box'>
-       <i-icon class='search-icon' size='22' type="search" />
+  <view class="top-area">
+    <!-- 搜索 -->
+    <view class='input-box'>
+      <input class='search-input' bindinput="bindKeyInput" placeholder="请输入商品" />
+      <view class='search-icon-box'>
+        <i-icon class='search-icon' size='22' type="search" />
+      </view>
     </view>
-  </view>
 
-  <!-- 头部 -->
-  <view class='title'>
-    <checkbox-group bindchange="checkboxChange">
+    <!-- 头部 -->
+    <view class='title'>
+      <checkbox-group bindchange="checkboxChange">
         <label class="checkbox-text" wx:for="{{items}}" wx:key='{{item.name}}'>
-        {{item.value}}
-          <checkbox class='checkbox-item' value="{{item.name}}" color='#333' checked="{{item.checked}}"/>
+          {{item.value}}
+          <checkbox class='checkbox-item' value="{{item.name}}" color='#333' checked="{{item.checked}}" />
         </label>
-    </checkbox-group>
-    <view bindtap='getProductList'>
-      筛选 <i-icon size='20' type="enter" />
+      </checkbox-group>
+      <view bindtap='getProductList'>
+        筛选
+        <i-icon size='20' type="enter" />
+      </view>
     </view>
-  </view>
 
-  <!-- 种类 -->
-  <view class='class-box'>
-     <scroll-view 
-scroll-x='{{true}}' class='class-type'>
-    <text 
-        class='class-item {{params.typeCode === item.typeCode ? "active": "" }}' 
-        wx:for='{{classTypes}}' 
-        wx:key='{{item.typeCode}}'
-        data-key='{{item.typeCode}}'
-        bindtap='switchClassType'
-        >{{item.typeName}}</text>
-  </scroll-view>
-  </view>
- 
+    <!-- 种类 -->
+    <view class='class-box'>
+      <scroll-view scroll-x='{{true}}' class='class-type'>
+        <text class='class-item {{params.typeCode === item.typeCode ? "active": "" }}' wx:for='{{classTypes}}' wx:key='{{item.typeCode}}' data-key='{{item.typeCode}}' bindtap='switchClassType'>{{item.typeName}}</text>
+      </scroll-view>
+    </view>
 
+  </view>
   <!-- product-list -->
-  <view class='list-box'>
-    <view class='list-item' wx:for='{{productList}}' wx:key='index'>
-      <view class='product-box' bindtap='toOtherPage' data-id='{{item.id}}'>
-        <image class='product-img' src='{{item.smallPic}}'></image>
-        <view>{{item.prodName}}</view>
-        <view>{{item.prodLabel}}</view>
-        </view>
-        <view class='desc'>
-          <view class='price-box'>
-            <view class='old-price'>
-             ￥<text class='num'>{{item.originalPrice}}</text>
+  <scroll-view  class="scrollView" scroll-y='{{true}}' bindscrolltolower='loadMoreProductList' lower-threshold="{{100}}" style='height: {{config.windowHeight}}px'>
+    <view class='bottom-area'>
+      <view class='list-box'>
+        <view class='list-item' wx:for='{{productList}}' wx:key='index'>
+          <view class='product-box' bindtap='toOtherPage' data-id='{{item.id}}'>
+            <image class='product-img' src='{{item.smallPic}}'></image>
+            <view>{{item.prodName}}</view>
+            <view>{{item.prodLabel}}</view>
+          </view>
+          <view class='desc'>
+            <view class='price-box'>
+              <view class='old-price'>
+                ￥
+                <text class='num'>{{item.originalPrice}}</text>
+              </view>
+              <view class='left-desc'>
+                <text class='current-price bold'>￥{{item.curentPrice}}</text>
+                <image class='price-icon' src='../../images/common/price_icon.png'></image>
+                <text class='text'>代言人价</text>
+              </view>
             </view>
-            <view class='left-desc'>
-              <text class='current-price bold'>￥{{item.curentPrice}}</text>
-              <image class='price-icon' src='../../images/common/price_icon.png'></image>
-              <text class='text'>代言人价</text>
+            <view class='cart-box' bindtap='addProductToCart' data-item='{{item}}'>
+              <view class='cart-inner-box'>
+                <image class='cart' src='../../images/shop/white_cart_icon.png'></image>
+              </view>
             </view>
           </view>
-          <view  class='cart-box' bindtap='addProductToCart'
-          data-item='{{item}}'
-          >
-             <view class='cart-inner-box'>
-              <image class='cart' src='../../images/shop/white_cart_icon.png'></image>
-            </view>
-          </view>
         </view>
+      </view>
+      <base-list-state tabIndex='1' activeIndex="1" state='{{listState}}' bindloadFailEvent='getProductList'></base-list-state>
     </view>
-  </view>
+  </scroll-view>
+
 </view>

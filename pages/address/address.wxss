@@ -2,6 +2,9 @@
 page{
   background: rgb(248, 248, 248)
 }
+.my-address-page{
+  padding-bottom: 91rpx;
+}
 .address-item{
   padding: 20rpx;
   background: #fff;
@@ -38,7 +41,7 @@ page{
 }
 .bottom-btn{
   position: fixed;
-  bottom: 30rpx;
+  bottom: 20rpx;
   left:0;
   right:0;
   display: flex;

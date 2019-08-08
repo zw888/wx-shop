@@ -31,7 +31,7 @@ Page({
     const shenArr = wx.getStorageSync('mySelectedAddressArr')
     const addressArr = [...shenArr, name]
     wx.setStorageSync('mySelectedAddressArr', addressArr)
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/address/xianList/xianList?adcode=' + adcode
     })
   },

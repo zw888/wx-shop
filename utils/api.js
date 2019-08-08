@@ -1,5 +1,5 @@
 const isProd = false
-const baseUrl = 'http://47.103.195.33:8091'
+const baseUrl = 'http://61.160.211.212:8091'
 
 // 登录
 // 微信登录
@@ -25,9 +25,9 @@ export const addressListUrl = baseUrl + '/mall/addressList'
 export const modifyAddressUrl = baseUrl + '/mall/addressModify'
 export const defautlAddressUrl = baseUrl + '/mall/updateDefault'
 // 获取省市县
-export const getShenListUrl = 'http://datavmap-public.oss-cn-hangzhou.aliyuncs.com/areas/csv/100000_province.json'
-export const getShiListUrl = 'http://datavmap-public.oss-cn-hangzhou.aliyuncs.com/areas/csv/'
-export const getXianListUrl = 'http://datavmap-public.oss-cn-hangzhou.aliyuncs.com/areas/csv/'
+export const getShenListUrl = 'https://datavmap-public.oss-cn-hangzhou.aliyuncs.com/areas/csv/100000_province.json'
+export const getShiListUrl = 'https://datavmap-public.oss-cn-hangzhou.aliyuncs.com/areas/csv/'
+export const getXianListUrl = 'https://datavmap-public.oss-cn-hangzhou.aliyuncs.com/areas/csv/'
 
 export default function ajax(url, data = {}, method = 'GET') {
   if(!url) {
@@ -52,9 +52,12 @@ export default function ajax(url, data = {}, method = 'GET') {
           wx.setStorageSync('Authorization', res.header.Authorization)
         } 
         if (res.data.code === -1) {
-          wx.navigateTo({
-            url: '/pages/login/login',
-          })
+          const pages = getCurrentPages()
+          if (pages[pages.length-1].route !== 'pages/login/login') {
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+          }
           return
         }
         if(res.statusCode === 200) {

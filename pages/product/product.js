@@ -8,12 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    activeId: '',
     // 商品详情
     productInfo: {
     },
     // 规格
     productClassInfo: [
     ],
+    // 商品存入购物车的一些信息
+    productCartData: {
+    },
     // banner图片
     bannerImgUrls: [],
     // 详情图片
@@ -22,22 +26,9 @@ Page({
     autoplay: false,
     interval: 5000,
     duration: 1000,
+    // 购物车数量
     cartProductTotal: 0,
-    // 商品存入购物车的一些信息
-    productCartData: {
-      id: '',
-      imageUrl: '../../images/product1.jpg',
-      name: '即时燕窝',
-      tag: '新鲜.可口.舒适',
-      oldPrice: '323.89',
-      vipPrice: '480.00'
-    },
-    product: {
-      price: '189.00',
-      vipPirce: '160.00',
-      name: '即时燕窝',
-      size: ['10g', '50g', '100g'],
-    },
+    // 当前规格的index
     activeClassIndex: 0,
   },
   /**
@@ -53,9 +44,11 @@ Page({
 
     const {id} = options
     this.setData({
-      productCartData: {...this.data.productCartData, id}
+      productInfo: { ...this.data.productInfo, id},
+      activeId: id
+    }, ()=>{
+      this.getProductDetails(this.data.activeId)
     })
-    this.getProductDetails(id)
   },
 
   /**
@@ -93,12 +86,14 @@ Page({
           productInfo: data.content.productDetail,
           productClassInfo: data.content.specsList
         }, ()=>{
-          const { productInfo } = this.data
+          const { productInfo, activeClassIndex, productClassInfo } = this.data
           const bannerImgUrls = productInfo.prodPic.split(',')
           const detailsImgUrls = productInfo.prodDetail.split(',')
           this.setData({
             bannerImgUrls,
-            detailsImgUrls
+            detailsImgUrls,
+            productCartData: { ...productInfo, ...productClassInfo[activeClassIndex]}
+          }, ()=>{
           })
         })
       }
@@ -127,16 +122,16 @@ Page({
       duration: e.detail.value
     })
   },
-  switchActiveClassIndex (e) {
+  switchActiveClassIndex :function (e) {
     const {index} = e.currentTarget.dataset
     if(index !== this.data.activeClassIndex)
     this.setData({
-      activeClassIndex: index
+      activeClassIndex: index,
+      productCartData: { ...this.data.productInfo, ...this.data.productClassInfo[index] } 
     })
   },
   // 添加购物车
   addProductToCart (e) {
-    console.log(999, this.data.productCartData)
     addProductToCart(this.data.productCartData)
     this.setCartProductLength()
   },
@@ -144,9 +139,17 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   goToCartPage() {
-    console.log(3333)
     wx.navigateTo({
       url: '/pages/cart/cart',
+    })
+  },
+  orderOneProduct() {
+    const orderProductItem = this.data.productCartData
+    orderProductItem.selected = true
+    orderProductItem.num = 1
+    wx.setStorageSync('orderProductList', [orderProductItem])
+    wx.navigateTo({
+      url: '/pages/order/order',
     })
   },
   onUnload: function () {
